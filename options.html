@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ComfyUI Send settings</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.5 system-ui, sans-serif; max-width: 680px; margin: 32px auto; padding: 0 20px; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  h2 { font-size: 1.05rem; margin: 28px 0 8px; }
+  p, li { color: GrayText; }
+  code { background: rgba(127,127,127,.18); padding: 1px 5px; border-radius: 4px; }
+  input[type=text] { width: 100%; padding: 8px 10px; box-sizing: border-box; }
+  button, .btn { padding: 8px 14px; cursor: pointer; font: inherit; text-decoration: none; border: 1px solid rgba(127,127,127,.5); border-radius: 6px; background: ButtonFace; color: ButtonText; display: inline-block; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+  .msg { margin-top: 10px; white-space: pre-wrap; }
+  .ok { color: #1a7f37; } .err { color: #c62828; }
+  .item { border: 1px solid rgba(127,127,127,.4); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+  .item label { flex: 1; cursor: pointer; display: flex; flex-direction: column; }
+  .item .kinds { color: GrayText; font-size: 13px; }
+  .item.bad .kinds { color: #c62828; }
+  .item button { padding: 4px 10px; }
+  .empty { color: GrayText; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>ComfyUI Send</h1>
+    <p>Right-click selected text or an image on any page to run it through your workflow.</p>
+  </div>
+  <a class="btn" id="help" target="_blank" rel="noopener">Help</a>
+</header>
+
+<h2>Workflows</h2>
+<div id="list"></div>
+<div class="row">
+  <input type="file" id="file" accept=".json,application/json" multiple>
+</div>
+<div class="msg" id="importMsg"></div>
+<p>Pick the one to use with the circle. You can also switch from the toolbar icon. Importing a file with the same name replaces the old one.</p>
+
+<h2>Preparing a workflow</h2>
+<ol>
+  <li>In ComfyUI, double-click the node that should receive your input and rename its title to <code>INPUT_TEXT</code> (a text prompt node) or <code>INPUT_IMAGE</code> (a Load Image node).</li>
+  <li>Use <b>Workflow &gt; Export (API)</b> to save the file, then import it above.</li>
+</ol>
+<p>Need more detail? Use the Help button.</p>
+
+<h2>ComfyUI address</h2>
+<input type="text" id="base" spellcheck="false">
+<div class="row">
+  <label><input type="checkbox" id="rand"> Use a new random seed each time</label>
+</div>
+<div class="row">
+  <button id="save">Save</button>
+  <button id="test">Test connection</button>
+</div>
+<div class="msg" id="msg"></div>
+
+<script src="shared.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

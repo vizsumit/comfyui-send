@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 14px/1.4 system-ui, sans-serif; width: 260px; margin: 0; padding: 12px; }
+  label { display: block; margin-bottom: 4px; color: GrayText; }
+  select { width: 100%; padding: 6px; box-sizing: border-box; }
+  .empty { color: GrayText; margin: 0 0 8px; }
+  .links { display: flex; justify-content: space-between; margin-top: 12px; }
+  a { color: LinkText; cursor: pointer; }
+</style>
+</head>
+<body>
+  <div id="pick"></div>
+  <div class="links">
+    <a id="manage">Manage workflows</a>
+    <a id="help" target="_blank" rel="noopener">Help</a>
+  </div>
+<script src="shared.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
