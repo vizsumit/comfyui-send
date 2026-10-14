@@ -13,6 +13,7 @@ async function render() {
   const s = await loadState();
   $("base").value = s.baseUrl;
   $("rand").checked = s.randomizeSeed;
+  $("btn").checked = s.showImageButton;
 
   const list = $("list");
   list.textContent = "";
@@ -103,7 +104,7 @@ $("save").addEventListener("click", async () => {
   const msg = $("msg");
   try {
     const baseUrl = cleanBase();
-    await chrome.storage.local.set({ baseUrl, randomizeSeed: $("rand").checked });
+    await chrome.storage.local.set({ baseUrl, randomizeSeed: $("rand").checked, showImageButton: $("btn").checked });
     await syncOriginRule(baseUrl);
     $("base").value = baseUrl;
     msg.className = "msg ok"; msg.textContent = "Saved.";

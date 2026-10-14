@@ -50,6 +50,7 @@ If the file is rejected, the settings page tells you why.
 
 - **Text:** select text on any page, right-click, then **Send selection to ComfyUI**.
 - **Image:** right-click an image, then **Send image to ComfyUI**. The image is uploaded to ComfyUI first, then the workflow is queued.
+- **Image, one click:** hover an image and click the small button in its top-right corner. It sends directly, with no menu. It also works on feed images on sites like Instagram, X, and Reddit.
 
 A notification confirms it was queued, or explains what went wrong. The extension does not show or wait for the result.
 
@@ -61,6 +62,7 @@ Only the options your current workflow supports appear in the menu.
 
 - **ComfyUI address:** where ComfyUI is running. The default is `http://127.0.0.1:8188`.
 - **New random seed each time:** replaces `seed` and `noise_seed` values before every send, so repeated runs give new images.
+- **Show a small send button on images:** turns the hover button on or off. Right-click still works either way.
 - **Test connection:** checks that the extension can reach ComfyUI.
 
 ## Troubleshooting

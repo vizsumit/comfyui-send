@@ -45,7 +45,7 @@ async function migrateLegacy() {
 
 async function loadState() {
   await migrateLegacy();
-  const s = await chrome.storage.local.get({ workflows: {}, activeId: null, baseUrl: DEFAULT_BASE, randomizeSeed: true });
+  const s = await chrome.storage.local.get({ workflows: {}, activeId: null, baseUrl: DEFAULT_BASE, randomizeSeed: true, showImageButton: true });
   if (!s.workflows[s.activeId]) s.activeId = Object.keys(s.workflows)[0] || null;
   return s;
 }
