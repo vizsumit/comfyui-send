@@ -103,14 +103,22 @@
 
   // ---------- Finding the image under the cursor ----------
   // elementsFromPoint sees through the transparent overlays that Instagram, X and Reddit put above photos.
-  function stackAt(rootNode, x, y, out) {
-    for (const el of rootNode.elementsFromPoint(x, y)) {
+  function stackAt(rootNode, x, y, out, seen = new Set(), depth = 0) {
+    if (depth > 4 || seen.has(rootNode)) return out;
+    seen.add(rootNode);
+    let els = [];
+    try {
+      els = rootNode.elementsFromPoint(x, y);
+    } catch (e) {
+      return out;
+    }
+    for (const el of els) {
       out.push(el);
-      if (el.shadowRoot) stackAt(el.shadowRoot, x, y, out);
+      if (el.shadowRoot) stackAt(el.shadowRoot, x, y, out, seen, depth + 1);
     }
     return out;
   }
-
+  
   function usable(img) {
     if (!img.isConnected) return false;
     const r = img.getBoundingClientRect();
